@@ -10,7 +10,7 @@
     <property name="controlValue" display-name-key="Control Value" description-key="Control value description" of-type-group="numbers" usage="bound" required="true" />
     <resources>
       <code path="index.ts" order="1"/>
-      <css path="css/linearStyle.css" order=""/>
+      <css path="css/linearStyle.css" order="1"/>
     </resources>
   </control>
 </manifest>
