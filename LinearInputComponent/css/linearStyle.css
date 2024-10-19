@@ -9,12 +9,12 @@
  .LinearInput\.LinearInputComponent input[type=range].lslider:focus {
     outline: none;
  }
- .LinearInput\.LinearInputComponent input[type=range].lslider::-webkit-slider-runnable-track {   
+ .LinearInput\.LinearInputComponent input[type=range].lslider::-webkit-slider-runnable-track {
     background: #666;
     height:2px;
     cursor:pointer
  }   
- .LinearInput\.LinearInputComponent input[type=range].lslider::-webkit-slider-thumb {   
+ .LinearInput\.LinearInputComponent input[type=range].lslider::-webkit-slider-thumb {
     background: #666;   
     border:0 solid #f00;
     height:24px;
@@ -25,8 +25,8 @@
     -webkit-appearance:none;
     margin-top:-12px
  }    
- .LinearInput\.LinearInputComponent input[type=range].lslider::-moz-range-track {   
-    background: #666;   
+ .LinearInput\.LinearInputComponent input[type=range].lslider::-moz-range-track {
+    background: #666;
     height:2px;
     cursor:pointer  
  }   
