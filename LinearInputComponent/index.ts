@@ -2,6 +2,22 @@ import { IInputs, IOutputs } from "./generated/ManifestTypes";
 
 export class LinearInputComponent implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
+    private _value: number;
+    private _notifyOutputChanged: () => void;
+    private labelElement: HTMLLabelElement;
+    private inputElement: HTMLInputElement;
+    private _container: HTMLDivElement;
+    private _context: ComponentFramework.Context<IInputs>;
+    private _refreshData: EventListenerOrEventListenerObject;
+
+
+    public refreshData(evt: Event): void
+    {
+        this._value = this.inputElement.valueAsNumber;
+        this.labelElement.innerHTML = this.inputElement.value;
+        this._notifyOutputChanged();
+    }
+
     /**
      * Empty constructor.
      */
@@ -20,7 +36,31 @@ export class LinearInputComponent implements ComponentFramework.StandardControl<
      */
     public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
     {
-        // Add control initialization code
+        this._context = context;
+        this._container = document.createElement("div");
+        this._notifyOutputChanged = notifyOutputChanged;
+        this._refreshData = this.refreshData.bind(this);
+
+        this.inputElement = document.createElement("input");
+        this.inputElement.setAttribute("type", "range");
+        this.inputElement.addEventListener("input", this._refreshData)
+
+        this.inputElement.setAttribute("min", "1");
+        this.inputElement.setAttribute("max", "1000");
+        this.inputElement.setAttribute("class", "lslider");
+        this.inputElement.setAttribute("id", "lsliderid");
+
+        this.labelElement = document.createElement("label");
+        this.labelElement.setAttribute("class", "lsliderlabel");
+        this.labelElement.setAttribute("id", "lsliderlabelid");
+
+        this._value = context.parameters.controlValue.raw!;
+        this.inputElement.setAttribute("value", context.parameters.controlValue.formatted ? context.parameters.controlValue.formatted : "0");
+        this.labelElement.innerHTML = context.parameters.controlValue.formatted ? context.parameters.controlValue.formatted : "0";
+
+        this._container.appendChild(this.inputElement);
+        this._container.appendChild(this.labelElement);
+        container.appendChild(this._container);
     }
 
 
@@ -30,7 +70,10 @@ export class LinearInputComponent implements ComponentFramework.StandardControl<
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
-        // Add code to update control view
+        this._value = context.parameters.controlValue.raw!;
+        this._context = context;
+        this.inputElement.setAttribute("value", context.parameters.controlValue.formatted ? context.parameters.controlValue.formatted : "");
+        this.labelElement.innerHTML = context.parameters.controlValue.formatted ? context.parameters.controlValue.formatted : "";
     }
 
     /**
@@ -39,7 +82,9 @@ export class LinearInputComponent implements ComponentFramework.StandardControl<
      */
     public getOutputs(): IOutputs
     {
-        return {};
+        return {
+            controlValue: this._value
+        };
     }
 
     /**
@@ -48,6 +93,6 @@ export class LinearInputComponent implements ComponentFramework.StandardControl<
      */
     public destroy(): void
     {
-        // Add code to cleanup control if necessary
+        this.inputElement.removeEventListener("input", this._refreshData);
     }
 }
