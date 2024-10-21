@@ -1,20 +1,21 @@
-.LinearInput\.LinearInputComponent input[type=range].lslider {   
+.LinearInput.LinearInputComponent input[type=range].lslider {   
     margin: 1px 0;   
     background:transparent;
     -webkit-appearance:none;
-    width:100%;padding:0;
+    width:100%;
+    padding:0;
     height:24px;
     -webkit-tap-highlight-color:transparent
  }
- .LinearInput\.LinearInputComponent input[type=range].lslider:focus {
+ .LinearInput.LinearInputComponent input[type=range].lslider:focus {
     outline: none;
  }
- .LinearInput\.LinearInputComponent input[type=range].lslider::-webkit-slider-runnable-track {
+ .LinearInput.LinearInputComponent input[type=range].lslider::-webkit-slider-runnable-track {
     background: #666;
     height:2px;
     cursor:pointer
  }   
- .LinearInput\.LinearInputComponent input[type=range].lslider::-webkit-slider-thumb {
+ .LinearInput.LinearInputComponent input[type=range].lslider::-webkit-slider-thumb {
     background: #666;   
     border:0 solid #f00;
     height:24px;
@@ -25,12 +26,12 @@
     -webkit-appearance:none;
     margin-top:-12px
  }    
- .LinearInput\.LinearInputComponent input[type=range].lslider::-moz-range-track {
+ .LinearInput.LinearInputComponent input[type=range].lslider::-moz-range-track {
     background: #666;
     height:2px;
     cursor:pointer  
  }   
- .LinearInput\.LinearInputComponent input[type=range].lslider::-moz-range-thumb {   
+ .LinearInput.LinearInputComponent input[type=range].lslider::-moz-range-thumb {   
     background: #666;   
     border:0 solid #f00;
     height:24px;
@@ -41,12 +42,12 @@
     -webkit-appearance:none;
     margin-top:-12px
  }   
- .LinearInput\.LinearInputComponent input[type=range].lslider::-ms-track {   
+ .LinearInput.LinearInputComponent input[type=range].lslider::-ms-track {   
     background: #666;   
     height:2px;
     cursor:pointer  
  }    
- .LinearInput\.LinearInputComponent input[type=range].lslider::-ms-thumb {   
+ .LinearInput.LinearInputComponent input[type=range].lslider::-ms-thumb {   
     background: #666;   
     border:0 solid #f00;
     height:24px;
